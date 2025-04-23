@@ -1,0 +1,36 @@
+,Model,Score,R2 Score,Feature Set,Hypertuned
+0,LinearRegression,0.8048655437080275,0.8048655437080275,Original Feature Set,GridSearchCV
+1,RandomForestRegressor,0.806324456359869,0.806324456359869,Original Feature Set,GridSearchCV
+2,DecisionTreeRegressor,0.7278330587507353,0.7278330587507353,Original Feature Set,GridSearchCV
+3,KNeighborsRegressor,0.4382095068077031,0.4382095068077031,Original Feature Set,GridSearchCV
+4,GradientBoostingRegressor,0.89647056786206,0.89647056786206,Original Feature Set,GridSearchCV
+0,LinearRegression,0.8251848509222961,0.8251848509222961,4 PCA Feature Set,GridSearchCV
+1,RandomForestRegressor,0.7294196725114995,0.7294196725114995,4 PCA Feature Set,GridSearchCV
+2,DecisionTreeRegressor,0.7072869098965266,0.7072869098965266,4 PCA Feature Set,GridSearchCV
+3,KNeighborsRegressor,0.62300633482934,0.62300633482934,4 PCA Feature Set,GridSearchCV
+4,GradientBoostingRegressor,0.7879990439539543,0.7879990439539543,4 PCA Feature Set,GridSearchCV
+0,LinearRegression,0.8042248519355399,0.8042248519355399,5 PCA Feature Set,GridSearchCV
+1,RandomForestRegressor,0.7038848937041202,0.7038848937041202,5 PCA Feature Set,GridSearchCV
+2,DecisionTreeRegressor,0.7244763726977667,0.7244763726977667,5 PCA Feature Set,GridSearchCV
+3,KNeighborsRegressor,0.620774672754191,0.620774672754191,5 PCA Feature Set,GridSearchCV
+4,GradientBoostingRegressor,0.77264639164628,0.77264639164628,5 PCA Feature Set,GridSearchCV
+0,LinearRegression,0.8049164310264733,0.8049164310264733,Original + 4 PCA Feature Set,GridSearchCV
+1,RandomForestRegressor,0.7506426489569571,0.7506426489569571,Original + 4 PCA Feature Set,GridSearchCV
+2,DecisionTreeRegressor,0.880622268353811,0.880622268353811,Original + 4 PCA Feature Set,GridSearchCV
+3,KNeighborsRegressor,0.5732724804930064,0.5732724804930064,Original + 4 PCA Feature Set,GridSearchCV
+4,GradientBoostingRegressor,0.9096064207376492,0.9096064207376492,Original + 4 PCA Feature Set,GridSearchCV
+0,LinearRegression,0.8045450078833696,0.8045450078833696,Original + 5 PCA Feature Set,GridSearchCV
+1,RandomForestRegressor,0.7540357612269822,0.7540357612269822,Original + 5 PCA Feature Set,GridSearchCV
+2,DecisionTreeRegressor,0.8704357141399669,0.8704357141399669,Original + 5 PCA Feature Set,GridSearchCV
+3,KNeighborsRegressor,0.5732724804930064,0.5732724804930064,Original + 5 PCA Feature Set,GridSearchCV
+4,GradientBoostingRegressor,0.9106192423043296,0.9106192423043296,Original + 5 PCA Feature Set,GridSearchCV
+0,LinearRegression,0.8048789898366389,0.8048789898366389,Original + 4 PCA + 5 PCA Feature Set,GridSearchCV
+1,RandomForestRegressor,0.6733494082724203,0.6733494082724203,Original + 4 PCA + 5 PCA Feature Set,GridSearchCV
+2,DecisionTreeRegressor,0.8705730595421877,0.8705730595421877,Original + 4 PCA + 5 PCA Feature Set,GridSearchCV
+3,KNeighborsRegressor,0.5583042375662193,0.5583042375662193,Original + 4 PCA + 5 PCA Feature Set,GridSearchCV
+4,GradientBoostingRegressor,0.9109895789048473,0.9109895789048473,Original + 4 PCA + 5 PCA Feature Set,GridSearchCV
+0,LinearRegression,0.804688703572984,0.804688703572984,Forward DT Feature Set,GridSearchCV
+1,RandomForestRegressor,0.8668160188075643,0.8668160188075643,Forward DT Feature Set,GridSearchCV
+2,DecisionTreeRegressor,0.8321871222140842,0.8321871222140842,Forward DT Feature Set,GridSearchCV
+3,KNeighborsRegressor,0.5545097664934937,0.5545097664934937,Forward DT Feature Set,GridSearchCV
+4,GradientBoostingRegressor,0.8924071774269113,0.8924071774269113,Forward DT Feature Set,GridSearchCV
