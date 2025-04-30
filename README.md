@@ -1,60 +1,55 @@
 # Formulation Dataset Analysis
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
-
-Pharma Data Analysis
+This repo contains the functions and classes for performing exploratory data analysis and applying machine learning modeling to make predictive models. 
 
 ## Project Organization
 
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         formulation_dataset and configuration for tools like black
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
-└── formulation_dataset   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes formulation_dataset a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
+### files
+
+Contains Python packages and R scripts. The R scripts are run from Python using subprocess and the command line, the Python files are imported as classes when needed.
+
+### csv_data_files
+
+Contains 3 folders:
+raw: For the initial raw dataset
+interim: For the dataset after removal of outliers
+processed: For the dataset after PCA transformation. The final model accuracy and residuals are also housed here.
+
+### plot
+
+A landing spot for the plots made from the R scripts and Python functions. Saved as PNGs.
+
+### models
+
+A landing spot for the trained models. Saved as pkl files.
+
+## Usage
+
+The main.py file contains a helper class called "analysis", which contains functions for running each part of the analysis:
+
+```python
+
+    # class to run the different scripts such as removing outliers and graphical analysis
+    helper = analysis()
+
+    # Run R script to view outliers in box plot form. Saves graphs
+    helper.view_outliers()
+    
+    # Run R script to remove outliers. Saves modified CSV file
+    helper.remove_outliers()
+
+    # Run R script to perform exploratoyr analysis. Saves graphs
+    helper.exploratory_analysis()
+
+    # Perform PCA analsysis with pca_tranformation class. Saves modified csv file
+    helper.pca_analysis()
+
+    # Train models with model_training class. Saves models as pickles
+    helper.train_models()
+
+    # Plot model accuracy and residuals for each feature set and model. Saves graphs
+    helper.graph_accuracy_residuals()
+
 ```
 
 --------
