@@ -16,6 +16,7 @@ dependencies:
   - notebook
   - numpy
   - pandas
+  - seaborn
   - scikit-learn
   - pip:
     - python-dotenv

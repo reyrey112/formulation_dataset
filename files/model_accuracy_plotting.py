@@ -53,7 +53,7 @@ class model_accuracy_plotting():
             plt.hist(residuals[names], edgecolor="black", linewidth=0.5, stacked=True)
             plt.tick_params(colors="#4d504f")
             plt.legend(labels=model_names, reverse=True, fontsize=10, loc="right", shadow=True)
-            plt.title(title, fontdict={"size": 18, "weight": "bold"}, loc="center", pad=0)
+            plt.title(title, fontdict={"size": 15, "weight": "bold"}, loc="center", pad=0)
             plt.xlabel(
                 "Residual Value",
                 fontdict={"fontname": "Times New Roman", "size": 14, "fontweight": "bold"},

@@ -16,8 +16,8 @@ df <- df |> select(-c(Formulation_Number,Main_Formulation_Number,Sub_Formulation
 
 summa <- df |>
     group_by(Mixing_Time) |>
-    summarize(Q3 = quantile(Crashout, probs = 0.75),
-            Q1 = quantile(Crashout, probs = 0.25))
+    summarize(Q3 = quantile(Viscosity, probs = 0.75),
+            Q1 = quantile(Viscosity, probs = 0.25))
 
 upper_0.5 <- as.numeric(summa[1,'Q3'] + (1.5 * (summa[1,'Q3'] -  summa[1,'Q1'])))
 lower_0.5 <- as.numeric(summa[1,'Q1'] - (1.5 * (summa[1,'Q3'] -  summa[1,'Q1'])))
@@ -31,11 +31,11 @@ upper_2.5 <- as.numeric(summa[5,'Q3'] + (1.5 * (summa[5,'Q3'] -  summa[5,'Q1']))
 lower_2.5 <- as.numeric(summa[5,'Q1'] - (1.5 * (summa[5,'Q3'] -  summa[5,'Q1'])))
 
 df_out <- df |> filter(
-    (Mixing_Time == 0.5 & Crashout < upper_0.5 & Crashout > lower_0.5) |
-    (Mixing_Time == 1 & Crashout < upper_1 & Crashout > lower_1) |
-    (Mixing_Time == 1.5 & Crashout < upper_1.5 & Crashout > lower_1.5) |
-    (Mixing_Time == 2 & Crashout < upper_2 & Crashout > lower_2) |
-    (Mixing_Time == 2.5 & Crashout < upper_2.5 & Crashout > lower_2.5))
+    (Mixing_Time == 0.5 & Viscosity < upper_0.5 & Viscosity > lower_0.5) |
+    (Mixing_Time == 1 & Viscosity < upper_1 & Viscosity > lower_1) |
+    (Mixing_Time == 1.5 & Viscosity < upper_1.5 & Viscosity > lower_1.5) |
+    (Mixing_Time == 2 & Viscosity < upper_2 & Viscosity > lower_2) |
+    (Mixing_Time == 2.5 & Viscosity < upper_2.5 & Viscosity > lower_2.5))
 
 #Exporting Dataset
 

@@ -1,9 +1,6 @@
 library(tidyverse)
 library(ggplot2)
 library(corrplot)
-library(RColorBrewer)
-library(patchwork)
-library(languageserver)
 
 saveplot <- function(name, vect) {
     path <- paste("plots/", name, ".png", sep = "")
@@ -13,9 +10,10 @@ saveplot <- function(name, vect) {
     ggsave(
         filename = path,
         units = "cm",
-        dpi = 300
+        dpi = 300,
+        width = 40,
+        height = 29
     )
-
     return(vect)
 }
 
@@ -27,6 +25,7 @@ plot_paths <- c()
 
 df <- read.csv("csv_data_files/interim/01_no_outliers.csv")
 
+view(df)
 # Data Preparation for Correlation Chart
 
 cor <- cor(df)
@@ -95,7 +94,7 @@ plot_paths <- saveplot("ex_line_mixingtime_active1", plot_paths)
 # Density Plot of Crashout
 
 df |>
-    ggplot(aes(Crashout, fill = as_factor(Mixing_Time))) +
+    ggplot(aes(Viscosity)) +
     geom_density(alpha = 0.5) +
     theme_bw()
 

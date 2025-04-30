@@ -52,6 +52,14 @@ class analysis(script_preparation):
 
         return labels
 
+    def view_outliers(self):
+        remove_outliers = subprocess.run(
+            f'"{self.get_R_script()}" "{self.back_to_forward_slash_switch(str(self.get_parent())) + "/files/initial_analysis.r"}"',
+            shell=True,
+            capture_output=True,
+            text=True,
+        )
+        
     def remove_outliers(self):
         remove_outliers = subprocess.run(
             f'"{self.get_R_script()}" "{self.back_to_forward_slash_switch(str(self.get_parent())) + "/files/outlier_removal.r"}"',
@@ -71,14 +79,11 @@ class analysis(script_preparation):
     def pca_analysis(self):
         df = pd.read_csv("csv_data_files/interim/01_no_outliers.csv")
         pca = pca_transformation(df)
-
-        # plot explained variance to find best # of componenets with elbow method
-
-        pca.plot_explained_variance()
+        components = [4,5]
 
         # create feature sets with principal components
 
-        for i in [4, 5]:
+        for i in components:
             x_pca = pca.transform_x(i)
             col_names = pca.create_coloumn_names(i)
             df_x_pca = pd.DataFrame(x_pca, columns=col_names)
@@ -213,10 +218,10 @@ class analysis(script_preparation):
                 print(f"Model Currently Being Trained: {model_labels[regressor]}")
 
                 trained_model = m.model_train(regressor, x_train_features, y_train)
-                
+
                 with open(f"models/{model_labels[regressor]} for {name}.pkl", "wb") as f:
                     dump(trained_model, f, protocol=5)
-                
+
                 y_pred = m.model_pred(trained_model, x_test_features)
                 list_residuals[i] = abs(m.calc_residuals(y_pred=y_pred, y_test=y_test))
 
@@ -265,6 +270,9 @@ def main():
     # class to run the different scripts such as removing outliers and graphical analysis
     helper = analysis()
 
+    # Run R script to view outliers in box plot form. Saves graphs
+    helper.view_outliers()
+    
     # Run R script to remove outliers. Saves modified CSV file
     helper.remove_outliers()
 
@@ -279,5 +287,5 @@ def main():
 
     # Plot model accuracy and residuals for each feature set and model. Saves graphs
     helper.graph_accuracy_residuals()
-    
+
 main()
