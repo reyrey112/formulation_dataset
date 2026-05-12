@@ -79,8 +79,9 @@ Each model was trained on all 7 feature sets with a 75/25 train/test split, with
 | Random Forest Regressor | GridSearchCV |
 | Gradient Boosting Regressor | RandomizedSearchCV |
 
-![Active 1 Variable Split](readme/Data_split_for_Active_1.png)
-![Mixing Time Variable Split](readme/Data_split_for_Mixing_Time.png)
+| Active 1 Variable Split | Mixing Time Variable Split |
+|---|---|
+| ![Active 1 Variable Split](readme/Data_split_for_Active_1.png) | ![Mixing Time Variable Split](readme/Data_split_for_Mixing_Time.png) |
 
 ---
 
@@ -89,8 +90,12 @@ Each model was trained on all 7 feature sets with a 75/25 train/test split, with
 ### Outlier Detection
 Box plots revealed significant outliers in the raw viscosity data — likely formulations where ingredient ratios caused out-of-range behavior. These were removed using the IQR method in R before any modeling.
 
-![Outliers](readme/outliers_box_viscosity_mixingtime.png)
-![No_Outliers](readme/ex_box_viscosity_mixingtime.png)
+| Outliers | No Outliers |
+|---|---|
+| ![Outliers](readme/outliers_box_viscosity_mixingtime.png) | ![No_Outliers](readme/ex_box_viscosity_mixingtime.png) |
+
+
+
 
 ### Correlation Analysis
 Key findings from the corrplot:
