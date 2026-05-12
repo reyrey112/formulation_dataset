@@ -9,29 +9,34 @@ Exploratory data analysis and machine learning pipeline for predicting drug form
 
 ## Background
 
-This dataset was generated from **100 real formulation experiments** conducted during pharmaceutical drug product development. Each formulation was created by varying concentrations of 4 active ingredients, 5 raw materials, water, and mixing time — a classic DoE structure. The goal is to predict **viscosity** (a critical quality attribute) from formulation inputs, enabling data-driven decisions on what to make next and reducing costly lab iterations.
-
-This is not a tutorial dataset. The data reflects real experimental noise, outliers, and the class imbalance challenges that come with small-scale pharmaceutical DoE studies.
+This dataset was generated from **100 real formulation experiments** conducted during pharmaceutical drug product development. Each formulation was created by varying concentrations of 4 active ingredients, 5 raw materials, water, and mixing time — a classic DoE structure. The goal is to predict **viscosity** (a critical quality attribute) from formulation inputs, enabling data-driven decisions on what to make next and reducing costly lab iterations. The data reflects real experimental noise, outliers, and the class imbalance challenges that come with small-scale pharmaceutical DoE studies.
 
 ---
 
 ## Results
 
 ### Model Accuracy Comparison
-*5 models × 7 feature sets — Gradient Boosting and Random Forest consistently outperformed simpler regressors*
+*5 models × 7 feature sets — Gradient Boosting consistently outperformed simpler regressors except for PCA only feature sets. This is due to a low number of dimensions and turning non-linear relationships into simpler linear relationships that can obscure the relationships*
 
-![Model Accuracy Comparison](plot/Comparison_of_Accuracy_Between_Models.png)
+![Model Accuracy Comparison](readme/Comparison_of_Accuracy_Between_Models.png)
 
 ### Residual Distributions by Feature Set
-*Residual spread narrows significantly with PCA-augmented feature sets*
 
-| Original Features | 4 Principal Components |
+| Original Features | Forward Feature Selection |
 |---|---|
-| ![Original](plot/Residuals_for_Original_Feature_Set.png) | ![4 PCA](plot/Residuals_for_4_PCA_Feature_Set.png) |
+| ![Original](readme/Residuals_for_Original_Feature_Set.png) | ![FFS](readme/Residuals_for_Forward_DT_Feature_Set.png) |
 
-| Original + 4 PCs | Forward Feature Selection |
+| 4 PCs | 5 PCs |
 |---|---|
-| ![Orig + 4PCA](plot/Residuals_for_Original_+_4_PCA_Feature_Set.png) | ![FFS](plot/Residuals_for_Forward_DT_Feature_Set.png) |
+| ![4 PCA](readme/Residuals_for_4_PCA_Feature_Set.png) | ![5 PCA](readme/Residuals_for_5_PCA_Feature_Set.png) |
+
+| Original + 4 PCs | Original + 5 PCs |
+|---|---|
+| ![Orig + 4PCA](readme/Residuals_for_Original_+_4_PCA_Feature_Set.png) | ![Orig + 5PCA](readme/Residuals_for_Original_+_5_PCA_Feature_Set.png) |
+
+| Original + 4 PCs + 5 PCs |
+|---|
+| ![Orig + 4PCA + 5PCA](readme/Residuals_for_Original_+_4_PCA_+_5_PCA_Feature_Set.png) |
 
 ---
 
@@ -61,6 +66,7 @@ Rather than training on a single feature representation, 7 distinct feature sets
 | Forward Feature Selection | Optimal subset chosen via Decision Tree selector |
 
 PCA component count was determined using the elbow method on explained variance — 4 components capture the dominant variance while avoiding overfitting on a small dataset.
+![PCA](readme/Elbow_Method_for_Optimal_Component_Number.png)
 
 ### Models Trained — 5 Regressors
 Each model was trained on all 7 feature sets with a 75/25 train/test split, with discrete variable distribution checked to ensure balanced splits:
@@ -73,6 +79,9 @@ Each model was trained on all 7 feature sets with a 75/25 train/test split, with
 | Random Forest Regressor | GridSearchCV |
 | Gradient Boosting Regressor | RandomizedSearchCV |
 
+![Active 1 Variable Split](readme/Data_split_for_Active_1.png)
+![Mixing Time Variable Split](readme/Data_split_for_Mixing_Time.png)
+
 ---
 
 ## Exploratory Analysis
@@ -80,12 +89,17 @@ Each model was trained on all 7 feature sets with a 75/25 train/test split, with
 ### Outlier Detection
 Box plots revealed significant outliers in the raw viscosity data — likely formulations where ingredient ratios caused out-of-range behavior. These were removed using the IQR method in R before any modeling.
 
+![Outliers](readme/outliers_box_viscosity_mixingtime.png)
+![No_Outliers](readme/ex_box_viscosity_mixingtime.png)
+
 ### Correlation Analysis
 Key findings from the corrplot:
 - Mixing time and viscosity have a strong positive correlation (0.78)
 - Active 1 and viscosity have virtually no correlation (-0.01)
 - Viscosity and crashout are negatively correlated (-0.48)
 - Remaining raw materials co-vary with Active 1 concentration by design
+
+![Outliers](readme/Corrplot.png)
 
 ---
 
@@ -142,8 +156,7 @@ python main.py
 
 ## Key Takeaways
 
-- PCA-augmented feature sets consistently reduced residual spread compared to raw features alone
-- Gradient Boosting and Random Forest outperformed simpler regressors across most feature sets
+- Gradient Boosting outperformed simpler regressors across most feature sets
 - Forward Feature Selection identified a compact, high-performing subset without manual feature engineering
 - The modeling framework is fully reusable — swap in a new CSV and the pipeline reruns end to end
 
