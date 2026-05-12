@@ -16,7 +16,7 @@ This dataset was generated from **100 real formulation experiments** conducted d
 ## Results
 
 ### Model Accuracy Comparison
-*5 models × 7 feature sets — Gradient Boosting consistently outperformed simpler regressors except for PCA only feature sets. This is due to a low number of dimensions and turning non-linear relationships into simpler linear relationships that can obscure the relationships*
+*5 models × 7 feature sets — Gradient Boosting consistently outperformed simpler regressors except for PCA only feature sets. This is due to a low number of dimensions and turning non-linear relationships into simpler linear relationships that can obscure the relationships. Decision Tree also faced this issue as a tree based model.*
 
 ![Model Accuracy Comparison](readme/Comparison_of_Accuracy_Between_Models.png)
 
