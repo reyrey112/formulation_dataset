@@ -66,6 +66,7 @@ Rather than training on a single feature representation, 7 distinct feature sets
 | Forward Feature Selection | Optimal subset chosen via Decision Tree selector |
 
 PCA component count was determined using the elbow method on explained variance — 4 components capture the dominant variance while avoiding overfitting on a small dataset.
+
 ![PCA](readme/Elbow_Method_for_Optimal_Component_Number.png)
 
 ### Models Trained — 5 Regressors
@@ -90,9 +91,9 @@ Each model was trained on all 7 feature sets with a 75/25 train/test split, with
 ### Outlier Detection
 Box plots revealed significant outliers in the raw viscosity data — likely formulations where ingredient ratios caused out-of-range behavior. These were removed using the IQR method in R before any modeling.
 
-| Outliers | No Outliers |
-|---|---|
-| ![Outliers](readme/outliers_box_viscosity_mixingtime.png) | ![No_Outliers](readme/ex_box_viscosity_mixingtime.png) |
+
+![Outliers](readme/outliers_box_viscosity_mixingtime.png)
+![No_Outliers](readme/ex_box_viscosity_mixingtime.png)
 
 
 
