@@ -1,6 +1,6 @@
 # Pharmaceutical Formulation Predictive Modeling
 ![Python](https://img.shields.io/badge/python-3.11-blue)
-![R](https://img.shields.io/badge/python-4.4.2-blue)
+![R](https://img.shields.io/badge/R-4.4.2-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 Exploratory data analysis and machine learning pipeline for predicting drug formulation viscosity from real Design of Experiment (DoE) data collected during pharmaceutical R&D.
