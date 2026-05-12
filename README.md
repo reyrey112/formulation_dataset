@@ -57,12 +57,12 @@ Rather than training on a single feature representation, 7 distinct feature sets
 
 | Feature Set | Variables |
 |---|---|
-| Original | 12 raw inputs (actives, raw materials, mixing time, crashout) |
+| Original | 12 original variables (actives, raw materials, mixing time, crashout) |
 | 4 PCs | 4 principal components |
 | 5 PCs | 5 principal components |
-| Original + 4 PCs | 16 variables |
-| Original + 5 PCs | 17 variables |
-| Original + 4 PCs + 5 PCs | 22 variables |
+| Original + 4 PCs | 16 variables (12 variables + 4 PCs) |
+| Original + 5 PCs | 17 variables (12 variables + 5 PCs) |
+| Original + 4 PCs + 5 PCs | 22 variables (12 variables + 4 PCs + 5 PCs) |
 | Forward Feature Selection | Optimal subset chosen via Decision Tree selector |
 
 PCA component count was determined using the elbow method on explained variance — 4 components capture the dominant variance while avoiding overfitting on a small dataset.
