@@ -9,7 +9,7 @@ Exploratory data analysis and machine learning pipeline for predicting drug form
 
 ## Background
 
-This dataset was generated from **100 real formulation experiments** conducted during pharmaceutical drug product development. Each formulation was created by varying concentrations of 4 active ingredients, 5 raw materials, water, and mixing time — a classic DoE structure. The goal is to predict **viscosity** (a critical quality attribute) from formulation inputs, enabling data-driven decisions on what to make next and reducing costly lab iterations. The data reflects real experimental noise, outliers, and the class imbalance challenges that come with small-scale pharmaceutical DoE studies.
+This dataset was generated from **100 real formulation experiments** conducted during pharmaceutical drug product development. Each formulation was created by varying concentrations of 4 active ingredients, 5 raw materials, water, and mixing time. The goal is to predict **viscosity** (a critical quality attribute) from formulation inputs in order to predict and enable data-driven decisions on what formulations to make next and reduce costly lab iterations. The data reflects real experimental noise, outliers, and the class imbalance challenges that come with small-scale pharmaceutical DoE studies.
 
 ---
 
@@ -65,7 +65,7 @@ Rather than training on a single feature representation, 7 distinct feature sets
 | Original + 4 PCs + 5 PCs | 22 variables (12 variables + 4 PCs + 5 PCs) |
 | Forward Feature Selection | Optimal subset chosen via Decision Tree selector |
 
-PCA component count was determined using the elbow method on explained variance — 4 components capture the dominant variance while avoiding overfitting on a small dataset.
+PCA component count was determined using the elbow method on explained variance. 4 components capture the dominant variance while avoiding overfitting on a small dataset.
 
 ![PCA](readme/Elbow_Method_for_Optimal_Component_Number.png)
 
@@ -89,7 +89,7 @@ Each model was trained on all 7 feature sets with a 75/25 train/test split, with
 ## Exploratory Analysis
 
 ### Outlier Detection
-Box plots revealed significant outliers in the raw viscosity data — likely formulations where ingredient ratios caused out-of-range behavior. These were removed using the IQR method in R before any modeling.
+Box plots revealed significant outliers in the raw viscosity data. These are likely formulations where ingredient ratios caused out-of-range behavior. These were removed using the IQR method in R before any modeling.
 
 
 ![Outliers](readme/outliers_box_viscosity_mixingtime.png)
@@ -164,7 +164,7 @@ python main.py
 
 - Gradient Boosting outperformed simpler regressors across most feature sets
 - Forward Feature Selection identified a compact, high-performing subset without manual feature engineering
-- The modeling framework is fully reusable — swap in a new CSV and the pipeline reruns end to end
+- The modeling framework is fully reusable. Swap in a new CSV and the pipeline reruns end to end
 
 ---
 
